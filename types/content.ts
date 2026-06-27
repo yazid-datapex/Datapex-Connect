@@ -1,4 +1,9 @@
-export type ContactKind = "call" | "email" | "whatsapp" | "linkedin";
+export type ContactKind =
+  | "call"
+  | "email"
+  | "whatsapp"
+  | "linkedin"
+  | "explore";
 
 export type ContactLink = {
   type: ContactKind;
