@@ -4,6 +4,10 @@ import { CompanyCards } from "@/components/CompanyCards";
 import { ContactButtons } from "@/components/ContactButtons";
 import { FeaturedSolutions } from "@/components/FeaturedSolutions";
 import { Hero } from "@/components/Hero";
+import {
+  buildVCardDownloadHref,
+  getVCardFileName,
+} from "@/lib/digital-identity";
 import { getCompaniesBySlugs } from "@/lib/companies";
 import { getPersonBySlug, getPersonSlugs } from "@/lib/people";
 
@@ -52,6 +56,8 @@ export default async function ProfilePage(props: ProfilePageProps) {
   }
 
   const companies = getCompaniesBySlugs(profile.affiliatedCompanySlugs);
+  const saveContactHref = buildVCardDownloadHref(profile, companies);
+  const saveContactFileName = getVCardFileName(profile);
 
   return (
     <main className="min-h-screen bg-white text-slate-950">
@@ -62,7 +68,11 @@ export default async function ProfilePage(props: ProfilePageProps) {
             <LogoPlaceholder label="Datapex Logo" />
           </header>
           <Hero profile={profile} />
-          <ContactButtons contacts={profile.contacts} />
+          <ContactButtons
+            contacts={profile.contacts}
+            saveContactHref={saveContactHref}
+            saveContactFileName={saveContactFileName}
+          />
           <FeaturedSolutions />
           <CompanyCards companies={companies} />
         </div>
