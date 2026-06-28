@@ -5,4 +5,6 @@ export const datapex: CompanyProfile = {
   name: "Datapex",
   summary:
     "An enterprise technology company helping organisations improve operations, integration, and application delivery.",
+  logo: "/datapex-signature.svg",
+  website: "https://www.mydatapex.com/",
 };

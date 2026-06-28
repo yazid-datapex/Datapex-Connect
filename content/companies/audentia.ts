@@ -5,4 +5,6 @@ export const audentia: CompanyProfile = {
   name: "Audentia",
   summary:
     "A strategic affiliate focused on digital delivery, implementation support, and long-term client partnerships.",
+  logo: "/audentia-logo-modern.svg",
+  website: "https://www.webstream-acp.com/",
 };

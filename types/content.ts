@@ -1,4 +1,9 @@
-export type ContactKind = "call" | "email" | "whatsapp" | "linkedin";
+export type ContactKind =
+  | "call"
+  | "email"
+  | "whatsapp"
+  | "linkedin"
+  | "explore";
 
 export type ContactLink = {
   type: ContactKind;
@@ -8,6 +13,7 @@ export type ContactLink = {
 
 export type PersonProfile = {
   slug: string;
+  profileUrl: string;
   fullName: string;
   professionalTitle: string;
   headline: string;
@@ -20,6 +26,8 @@ export type CompanyProfile = {
   slug: string;
   name: string;
   summary: string;
+  logo: string;
+  website: string;
 };
 
 export type ProductProfile = {

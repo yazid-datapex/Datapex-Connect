@@ -1,48 +1,59 @@
 import {
+  CompassIcon,
   ContactRoundIcon,
   MailIcon,
   MessageCircleIcon,
   PhoneIcon,
 } from "@/components/LucideIcons";
+import { QrCodeDialog } from "@/components/QrCodeDialog";
+import { getContactsByType } from "@/lib/digital-identity";
 import type { ContactKind, ContactLink } from "@/types/content";
 
 type ContactButtonsProps = {
   contacts: ContactLink[];
+  saveContactHref: string;
+  saveContactFileName: string;
+  profileUrl: string;
+  qrCodeSvg: string;
+  qrCodeDescription: string;
 };
 
-type VisibleContactType = Exclude<ContactKind, "linkedin">;
+type PrimaryContactType = Exclude<ContactKind, "linkedin">;
 
-type ActionTile = {
-  kind: VisibleContactType | "save-contact";
+type LinkActionTile = {
+  kind: PrimaryContactType | "save-contact";
   label: string;
-  href?: string;
+  href: string;
+  download?: string;
   external?: boolean;
 };
 
 const tileClassName =
-  "flex min-h-[6.5rem] items-center gap-4 rounded-[1.85rem] bg-white px-5 py-5 text-left shadow-[0_18px_40px_-32px_rgba(15,23,42,0.2)] ring-1 ring-slate-200/80 sm:px-6 sm:py-6";
+  "flex min-h-[6.75rem] items-center gap-4 rounded-[1.85rem] bg-white px-5 py-5 text-left shadow-[0_18px_40px_-32px_rgba(15,23,42,0.2)] ring-1 ring-slate-200/80 sm:px-6 sm:py-6";
 
-function getContactsByType(contacts: ContactLink[]) {
-  return contacts.reduce<Partial<Record<VisibleContactType, ContactLink>>>(
-    (map, contact) => {
-      if (contact.type !== "linkedin") {
-        map[contact.type] = contact;
-      }
-
-      return map;
-    },
-    {},
-  );
-}
-
-function getActions(contacts: ContactLink[]): ActionTile[] {
+function getActions(
+  contacts: ContactLink[],
+  saveContactHref: string,
+  saveContactFileName: string,
+): LinkActionTile[] {
   const contactsByType = getContactsByType(contacts);
-  const actions: ActionTile[] = [
+  const actions: LinkActionTile[] = [
     {
       kind: "save-contact",
       label: "Save Contact",
+      href: saveContactHref,
+      download: saveContactFileName,
     },
   ];
+
+  if (contactsByType.explore) {
+    actions.push({
+      kind: "explore",
+      label: contactsByType.explore.label,
+      href: contactsByType.explore.href,
+      external: true,
+    });
+  }
 
   if (contactsByType.email) {
     actions.push({
@@ -72,7 +83,7 @@ function getActions(contacts: ContactLink[]): ActionTile[] {
   return actions;
 }
 
-function getIcon(kind: ActionTile["kind"]) {
+function getIcon(kind: LinkActionTile["kind"]) {
   const iconClassName = "h-5 w-5 text-slate-700";
 
   switch (kind) {
@@ -82,14 +93,22 @@ function getIcon(kind: ActionTile["kind"]) {
       return <MailIcon className={iconClassName} />;
     case "whatsapp":
       return <MessageCircleIcon className={iconClassName} />;
+    case "explore":
+      return <CompassIcon className={iconClassName} />;
     case "save-contact":
       return <ContactRoundIcon className={iconClassName} />;
   }
 }
 
-function ActionTile({ action }: { action: ActionTile }) {
-  const content = (
-    <>
+function ActionTileLink({ action }: { action: LinkActionTile }) {
+  return (
+    <a
+      className={tileClassName}
+      href={action.href}
+      download={action.download}
+      target={action.external ? "_blank" : undefined}
+      rel={action.external ? "noreferrer" : undefined}
+    >
       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-50 ring-1 ring-slate-200/80">
         {getIcon(action.kind)}
       </span>
@@ -98,31 +117,23 @@ function ActionTile({ action }: { action: ActionTile }) {
           {action.label}
         </p>
       </div>
-    </>
-  );
-
-  if (!action.href) {
-    return (
-      <div aria-disabled="true" className={tileClassName}>
-        {content}
-      </div>
-    );
-  }
-
-  return (
-    <a
-      className={tileClassName}
-      href={action.href}
-      target={action.external ? "_blank" : undefined}
-      rel={action.external ? "noreferrer" : undefined}
-    >
-      {content}
     </a>
   );
 }
 
-export function ContactButtons({ contacts }: ContactButtonsProps) {
-  const actions = getActions(contacts);
+export function ContactButtons({
+  contacts,
+  saveContactHref,
+  saveContactFileName,
+  profileUrl,
+  qrCodeSvg,
+  qrCodeDescription,
+}: ContactButtonsProps) {
+  const [saveContactAction, ...otherActions] = getActions(
+    contacts,
+    saveContactHref,
+    saveContactFileName,
+  );
 
   return (
     <section className="space-y-5 sm:space-y-6">
@@ -131,9 +142,17 @@ export function ContactButtons({ contacts }: ContactButtonsProps) {
           Let&apos;s Connect
         </h2>
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        {actions.map((action) => (
-          <ActionTile key={action.kind} action={action} />
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-6">
+        <ActionTileLink action={saveContactAction!} />
+        <QrCodeDialog
+          label="QR Code"
+          profileUrl={profileUrl}
+          qrCodeSvg={qrCodeSvg}
+          description={qrCodeDescription}
+          tileClassName={tileClassName}
+        />
+        {otherActions.map((action) => (
+          <ActionTileLink key={action.kind} action={action} />
         ))}
       </div>
     </section>

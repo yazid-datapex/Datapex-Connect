@@ -2,6 +2,7 @@ import type { PersonProfile } from "@/types/content";
 
 export const yazid: PersonProfile = {
   slug: "yazid",
+  profileUrl: "https://connect.mydatapex.com/yazid",
   fullName: "Yazid Yahya",
   professionalTitle: "Enterprise Solutions Consultant",
   headline:
@@ -12,7 +13,7 @@ export const yazid: PersonProfile = {
     {
       type: "call",
       label: "Call",
-      href: "tel:+60126404721",
+      href: "tel:+60166145998",
     },
     {
       type: "email",
@@ -22,7 +23,12 @@ export const yazid: PersonProfile = {
     {
       type: "whatsapp",
       label: "WhatsApp",
-      href: "https://wa.me/60126404721",
+      href: "https://wa.me/60166145998",
+    },
+    {
+      type: "explore",
+      label: "Explore Webstream ACP",
+      href: "https://www.webstream-acp.com/",
     },
     {
       type: "linkedin",

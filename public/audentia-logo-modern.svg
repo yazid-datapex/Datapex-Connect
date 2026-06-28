@@ -1,0 +1,19 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular background in light thorn color -->
+  <circle cx="200" cy="200" r="190" fill="#D4C994"/>
+  
+  <!-- All triangles moved down 20px (5%) for better visual centering -->
+  <!-- Original color palette from source image -->
+  
+  <!-- Outer large green triangle (100% - radius 170) -->
+  <path d="M 200 50 L 347.22 305 L 52.78 305 Z" fill="#356B47" stroke="none"/>
+  
+  <!-- Second dark navy/green triangle (70% - radius 119) -->
+  <path d="M 200 101 L 303.05 279.5 L 96.95 279.5 Z" fill="#0D1F2D" stroke="none"/>
+  
+  <!-- White triangle (50% - radius 85) -->
+  <path d="M 200 135 L 273.61 262.5 L 126.39 262.5 Z" fill="#FFFFFF" stroke="none"/>
+  
+  <!-- Center light thorn triangle (20% - radius 34) -->
+  <path d="M 200 186 L 229.44 237 L 170.56 237 Z" fill="#D4C994" stroke="none"/>
+</svg>

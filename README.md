@@ -1,55 +1,240 @@
 # Datapex Connect
 
-Datapex Connect is a production-ready Next.js application workspace for building the Datapex web presence, structured content, and future product-facing experiences.
+> A professional identity platform for consultants, architects and technology leaders.
 
-This repository is intentionally prepared with modular placeholders and documentation so the team can expand the product without redesigning the foundation each time.
+---
 
-## Getting Started
+## Overview
 
-Install dependencies:
+Datapex Connect is a modern digital identity platform designed for enterprise professionals.
 
-```bash
-npm install
+Rather than replacing a personal website or LinkedIn profile, it focuses on one objective:
+
+**Helping people continue meaningful business conversations.**
+
+It combines professional identity, organisation affiliations, featured solutions and digital contact capabilities into a single mobile-first experience suitable for conferences, customer meetings and technical engagements.
+
+The project began as a digital business card for conference presentations and evolved into a reusable professional identity platform.
+
+---
+
+## Vision
+
+Traditional business cards are static.
+
+Professional profiles become outdated.
+
+Conference attendees often forget who they met.
+
+Datapex Connect provides a single, elegant experience that answers four questions within seconds:
+
+* Who is this person?
+* What do they do?
+* Which organisations do they represent?
+* How do I contact them?
+
+---
+
+## Current Features
+
+* Executive profile page
+* Content-driven architecture
+* Professional affiliations
+* Featured solutions
+* Mobile-first responsive design
+* Product specification driven development
+
+---
+
+## Planned Features
+
+* Downloadable vCard
+* QR code sharing
+* Google Wallet support
+* Apple Wallet support
+* NFC support
+* Conference-specific landing pages
+* Multi-profile support
+* Analytics
+* Product microsites
+
+---
+
+## Architecture
+
+The application follows a content-driven architecture.
+
+Business information is separated from presentation.
+
+```
+content/
+├── people/
+├── companies/
+├── solutions/
+
+↓
+
+lib/
+├── registries
+
+↓
+
+components/
+
+↓
+
+pages
 ```
 
-Start the development server:
+This enables future migration to a CMS or API without changing the presentation layer.
 
-```bash
-npm run dev
+---
+
+## Engineering Philosophy
+
+This project is intentionally specification-driven.
+
+Every feature follows the same lifecycle.
+
+```
+Vision
+
+↓
+
+Product Specification
+
+↓
+
+Architecture Decision
+
+↓
+
+Implementation
+
+↓
+
+Review
+
+↓
+
+Release
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the app locally.
+Implementation is performed by AI-assisted development while architectural decisions remain human-led.
 
-Create a production build:
+---
 
-```bash
-npm run build
+## Documentation
+
+Project documentation is organised into:
+
+```
+docs/
+
+vision/
+Product direction
+
+specifications/
+Feature specifications
+
+adr/
+Architecture Decision Records
+
+playbook/
+Engineering methodology
 ```
 
-Run linting:
+The documentation is considered part of the product and evolves together with the implementation.
 
-```bash
-npm run lint
-```
+---
 
-## Project Structure
+## Technology Stack
 
-- `src/app` contains the App Router entrypoints and global application shell.
-- `components` contains reusable UI placeholders for future page assembly.
-- `content` contains structured content records for people, companies, and products.
-- `lib` contains shared configuration and helper utilities.
-- `types` contains shared TypeScript domain models.
-- `docs` contains product, branding, roadmap, and architecture notes.
+* Next.js 15
+* React
+* TypeScript
+* Tailwind CSS
+* App Router
 
-## Current Scope
+Future integrations will include:
 
-The repository is currently prepared for development with:
+* Google Wallet
+* Apple Wallet
+* QR Code generation
+* vCard generation
 
-- starter content removed from the default Next.js homepage
-- placeholder UI components for future landing-page implementation
-- initial structured content entries for people and companies
-- baseline documentation for product direction and technical decisions
+---
 
-## Notes
+## Project Status
 
-This project uses the Next.js App Router, TypeScript, and Tailwind CSS v4. Styling and the real landing page are intentionally deferred until the product direction and content model are finalized.
+Current milestone:
+
+**Conference Ready**
+
+The project is preparing for its first production use as a professional identity platform during enterprise customer presentations.
+
+---
+
+## Repository Philosophy
+
+Datapex Connect is not only a software project.
+
+It is also the reference implementation for an AI-assisted software engineering workflow.
+
+The repository captures:
+
+* Product Vision
+* Product Specifications
+* Architecture Decisions
+* Engineering Playbook
+
+The goal is to demonstrate that AI can accelerate implementation while humans remain responsible for product vision, architecture and user experience.
+
+---
+
+## Roadmap
+
+### Milestone 0
+
+* Foundation
+* Architecture
+* Executive Profile
+* Engineering Methodology
+
+### Milestone 1
+
+* Digital Identity
+* vCard
+* QR Code
+* Logos
+* Deployment
+
+### Milestone 2
+
+* Wallet Integration
+* Multi-profile Support
+* Conference Experiences
+
+### Milestone 3
+
+* Professional Identity Platform
+
+---
+
+## Contributing
+
+The project follows a specification-first workflow.
+
+Before implementation:
+
+1. Define the Product Vision.
+2. Create or update the Product Specification.
+3. Record architectural decisions when appropriate.
+4. Implement.
+5. Review the product experience.
+
+---
+
+## License
+
+To be determined.

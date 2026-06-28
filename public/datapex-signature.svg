@@ -1,0 +1,7 @@
+<svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="360" height="120" rx="18" fill="#ffffff"/>
+  <path fill="#1198E0" fill-rule="evenodd" d="M38 22h88c48.6 0 88 23.3 88 52s-39.4 52-88 52H38zm36 33v32h39c23.2 0 42-7.2 42-16s-18.8-16-42-16z" clip-rule="evenodd"/>
+  <path d="M196 24h60l-54 42-28-36z" fill="#22C7C9"/>
+  <path d="M208 76l51 22h-57l-24-30z" fill="#22C7C9"/>
+  <path d="M136 98h66c25-31 68-57 122-70h-56c-35 15-86 37-132 70z" fill="#FF7F2A"/>
+</svg>
